@@ -2,25 +2,20 @@
 import { usePathname } from "next/navigation";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import { useEffect, useState } from "react";
+import { AuthProvider } from "../context/AuthContext";
 
-export default function LayoutWrapper({ children }) {
+export default function LayoutWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const [hydrated, setHydrated] = useState(false);
-
-  useEffect(() => {
-    setHydrated(true);
-  }, []);
 
   // Hide navbar for /blogs and all /blogs/* routes
-  const hideNavbar = hydrated && pathname.startsWith("/blogs");
+  const hideNavbar = pathname.startsWith("/blogs");
   const mainClassName = `${!hideNavbar ? "pt-16 md:pt-20" : ""} min-h-screen`;
 
   return (
-    <>
+   <AuthProvider>
       {!hideNavbar && <Navbar />}
       <main className={mainClassName}>{children}</main>
       <Footer />
-    </>
+    </AuthProvider>
   );
 }

@@ -1,8 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { getFirestore, collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { ref as storageRef, uploadBytes, getDownloadURL } from "firebase/storage";
-import { db, storage } from "@/FirebaseConfig";
+import { db, storage } from "../../FirebaseConfig";
 
 const jobs = [
   {

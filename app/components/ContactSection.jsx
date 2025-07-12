@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import contactImg from "@/public/assets/contact.jpg"; // Replace with your image path
+import contactImg from "../../public/assets/contact.jpg"; // Replace with your image path
 
 export default function ContactSection() {
   return (
